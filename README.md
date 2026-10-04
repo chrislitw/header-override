@@ -40,3 +40,5 @@ Run `./package.sh` to create `dist/header-override-<version>.zip` containing onl
 ## Privacy
 
 All rules, including header values, are stored locally on your device and are never sent anywhere.
+
+See the full [Privacy Policy](https://chrislitw.github.io/header-override/privacy-policy-en.html) ([繁體中文](https://chrislitw.github.io/header-override/privacy-policy.html)).

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>隱私權政策 - Header Override</title>
+  <style>
+    /* 色票與 popup.css 的 :root 一致（板岩 + 青綠） */
+    :root {
+      --text: #0f172a;
+      --text-secondary: #334155;
+      --text-muted: #64748b;
+      --line: #e2e8f0;
+      --bg-field: #f1f5f9;
+      --accent: #0d9488;
+      --accent-hover: #0f766e;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", sans-serif;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+      padding-bottom: 0.2rem;
+    }
+    h2 { font-size: 1.3rem; margin-top: 2rem; color: var(--text); }
+    p { margin: 0.8rem 0; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent-hover); text-decoration: underline; }
+    .date { color: var(--text-muted); font-size: 0.9rem; }
+    .lang-switch {
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--line);
+      color: var(--text-muted);
+    }
+    li code, p code {
+      background: var(--bg-field);
+      color: var(--text);
+      font-family: 'SF Mono', 'Monaco', 'Menlo', monospace;
+      font-size: 0.85em;
+      padding: 0.1rem 0.35rem;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="lang-switch"><strong>繁體中文</strong> · <a href="privacy-policy-en.html">English</a></div>
+  <h1>隱私權政策</h1>
+  <p class="date">最後更新日期：2026 年 10 月 4 日</p>
+
+  <h2>概述</h2>
+  <p>「Header Override」（以下簡稱「本擴充功能」）尊重並保護使用者的隱私。本隱私權政策說明本擴充功能如何處理您的資料。</p>
+
+  <h2>資料收集</h2>
+  <p>本擴充功能<strong>不會收集或傳輸任何個人資料或使用者資訊</strong>，開發者也不會從本擴充功能取得任何資料。</p>
+
+  <h2>資料儲存</h2>
+  <p>您建立的 header 規則（header 名稱、值、套用網域與開關狀態）僅儲存在瀏覽器本機的擴充功能儲存空間（<code>chrome.storage.local</code>）中，其中可能包含您自行輸入的 API token 等內容。這些資料只存在您的裝置上，不會同步到其他裝置，也不會傳送給開發者或任何第三方。刪除規則或移除本擴充功能即會一併刪除。</p>
+
+  <h2>資料使用</h2>
+  <p>本擴充功能僅使用您設定的規則，在瀏覽器送往您指定網域的 fetch / XHR 請求上新增、取代或移除 header。header 的修改由 Chrome 內建的 <code>declarativeNetRequest</code> API 執行，本擴充功能不會讀取請求、回應或網頁的內容，也不會記錄您的瀏覽紀錄。</p>
+
+  <h2>第三方服務</h2>
+  <p>本擴充功能不使用任何第三方分析工具、廣告服務或追蹤技術。</p>
+
+  <h2>權限說明</h2>
+  <ul>
+    <li><code>declarativeNetRequest</code>：用於將您設定的 header 規則套用到送出的請求。</li>
+    <li><code>storage</code>：用於在您的裝置本機儲存 header 規則與開關設定。</li>
+    <li>網站存取權限（<code>&lt;all_urls&gt;</code>）：讓規則可以修改您指定的任何網域的 header，包含 <code>localhost</code> 與您自己的伺服器。</li>
+  </ul>
+
+  <h2>政策變更</h2>
+  <p>如本隱私權政策有任何變更，將於本頁面更新。</p>
+
+  <h2>聯絡方式</h2>
+  <p>如有任何隱私權相關問題，請透過 <a href="https://github.com/chrislitw/header-override/issues">GitHub Issues</a> 與我們聯繫。</p>
+</body>
+</html>

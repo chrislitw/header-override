@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy - Header Override</title>
+  <style>
+    /* Palette mirrors the :root tokens in popup.css (slate + teal) */
+    :root {
+      --text: #0f172a;
+      --text-secondary: #334155;
+      --text-muted: #64748b;
+      --line: #e2e8f0;
+      --bg-field: #f1f5f9;
+      --accent: #0d9488;
+      --accent-hover: #0f766e;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", sans-serif;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+      padding-bottom: 0.2rem;
+    }
+    h2 { font-size: 1.3rem; margin-top: 2rem; color: var(--text); }
+    p { margin: 0.8rem 0; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent-hover); text-decoration: underline; }
+    .date { color: var(--text-muted); font-size: 0.9rem; }
+    .lang-switch {
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--line);
+      color: var(--text-muted);
+    }
+    li code, p code {
+      background: var(--bg-field);
+      color: var(--text);
+      font-family: 'SF Mono', 'Monaco', 'Menlo', monospace;
+      font-size: 0.85em;
+      padding: 0.1rem 0.35rem;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="lang-switch"><a href="privacy-policy.html">繁體中文</a> · <strong>English</strong></div>
+  <h1>Privacy Policy</h1>
+  <p class="date">Last updated: October 4, 2026</p>
+
+  <h2>Overview</h2>
+  <p>"Header Override" (hereinafter referred to as "the Extension") respects and protects user privacy. This Privacy Policy explains how the Extension handles your data.</p>
+
+  <h2>Data Collection</h2>
+  <p>The Extension <strong>does not collect or transmit any personal data or user information</strong>. The developer receives no data from the Extension.</p>
+
+  <h2>Data Storage</h2>
+  <p>The header rules you create (header name, value, target domains, and on/off state) are stored only in your browser's local extension storage (<code>chrome.storage.local</code>). This may include values you enter yourself, such as API tokens. This data stays on your device, is not synced to other devices, and is never sent to the developer or any third party. Deleting a rule or uninstalling the Extension removes it.</p>
+
+  <h2>Data Usage</h2>
+  <p>The Extension uses your rules only to add, replace, or remove request headers on the fetch / XHR requests your browser sends to the domains you choose. Headers are modified by Chrome's built-in <code>declarativeNetRequest</code> API. The Extension never reads the content of your requests, responses, or web pages, and does not record your browsing history.</p>
+
+  <h2>Third-Party Services</h2>
+  <p>The Extension does not use any third-party analytics, advertising services, or tracking technologies.</p>
+
+  <h2>Permissions</h2>
+  <ul>
+    <li><code>declarativeNetRequest</code>: Used to apply the header rules you configure to outgoing requests.</li>
+    <li><code>storage</code>: Used to save your header rules and on/off settings locally on your device.</li>
+    <li>Host permissions (<code>&lt;all_urls&gt;</code>): Required so that rules can modify headers on any domain you choose, including <code>localhost</code> and your own servers.</li>
+  </ul>
+
+  <h2>Policy Changes</h2>
+  <p>Any changes to this Privacy Policy will be reflected on this page.</p>
+
+  <h2>Contact</h2>
+  <p>For any privacy-related questions, please reach out via <a href="https://github.com/chrislitw/header-override/issues">GitHub Issues</a>.</p>
+</body>
+</html>
