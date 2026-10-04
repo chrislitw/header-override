@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Header Override</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container" id="container">
+    <div class="header-section">
+      <h1>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M4 6H20V8H4V6ZM4 11H14V13H4V11ZM4 16H20V18H4V16ZM17 10L21 12L17 14V10Z" fill="currentColor"/>
+        </svg>
+        Header Override
+      </h1>
+      <div class="header-right">
+        <span class="badge" id="activeCount">0 active</span>
+        <label class="switch switch-dark" title="Turn all rules on or off">
+          <input type="checkbox" id="globalToggle">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+
+    <div class="rules-section">
+      <div class="section-header">
+        <h2>Request Headers</h2>
+        <button id="addRule" class="btn btn-add">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="currentColor"/>
+          </svg>
+          Add
+        </button>
+      </div>
+
+      <div id="rulesList" class="rules-list"></div>
+    </div>
+
+    <div class="footer" id="footer">Applies to fetch / XHR requests · Changes take effect immediately</div>
+  </div>
+
+  <script src="rules.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

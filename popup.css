@@ -1,0 +1,410 @@
+:root {
+  /* Surfaces */
+  --bg: #ffffff;
+  --bg-subtle: #f8fafc;
+  --bg-field: #f1f5f9;
+  --header-bg: #1e293b;
+  --header-field: #334155;
+
+  /* Lines */
+  --line: #e2e8f0;
+  --line-strong: #cbd5e1;
+  --line-dark: #475569;
+
+  /* Text */
+  --text: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --text-faint: #94a3b8;
+  --text-on-dark-muted: #94a3b8;
+
+  /* Accent */
+  --accent: #0d9488;
+  --accent-ring: rgba(13, 148, 136, 0.14);
+  --accent-on-dark: #5eead4;
+
+  /* Warning / Danger */
+  --warning: #b45309;
+  --danger: #dc2626;
+
+  --radius: 6px;
+  --mono: 'SF Mono', 'Monaco', 'Menlo', 'Courier New', monospace;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  width: 480px;
+  height: 600px;
+  overflow: hidden;
+  font-family: var(--sans);
+  color: var(--text);
+  background: var(--bg);
+  font-size: 13px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--bg);
+}
+
+/* ---- Header ---- */
+.header-section {
+  background: var(--header-bg);
+  padding: 14px 16px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-section h1 {
+  font-size: 13px;
+  font-weight: 600;
+  color: #f8fafc;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.header-section h1 svg {
+  color: var(--accent-on-dark);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.badge {
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--text-on-dark-muted);
+  font-size: 11px;
+  font-weight: 500;
+  font-family: var(--mono);
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+/* ---- Switch ---- */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 17px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.switch input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  background: var(--line-strong);
+  border-radius: 99px;
+  transition: background 0.15s ease;
+}
+
+.slider::before {
+  content: '';
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  left: 2px;
+  top: 2px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.2);
+  transition: transform 0.15s ease;
+}
+
+.switch input:checked + .slider {
+  background: var(--accent);
+}
+
+.switch input:checked + .slider::before {
+  transform: translateX(13px);
+}
+
+.switch input:focus-visible + .slider {
+  box-shadow: 0 0 0 2px var(--accent-ring);
+}
+
+.switch-dark .slider {
+  background: var(--line-dark);
+}
+
+/* ---- Rules Section ---- */
+.rules-section {
+  flex: 1;
+  min-height: 0;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.section-header h2 {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.rules-list {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: opacity 0.15s ease;
+}
+
+/* 總開關關閉時整個列表淡化，但仍可編輯 */
+.container.is-off .rules-list {
+  opacity: 0.5;
+}
+
+.rules-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.rules-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.rules-list::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: 99px;
+}
+
+/* ---- Rule Card ---- */
+.rule-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-shrink: 0;
+  transition: border-color 0.12s ease, box-shadow 0.12s ease;
+  animation: fadeIn 0.12s ease-out;
+}
+
+.rule-card:hover {
+  border-color: var(--line-strong);
+}
+
+.rule-card:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-ring);
+}
+
+.rule-card.is-disabled .rule-input,
+.rule-card.is-disabled .value-field {
+  opacity: 0.55;
+}
+
+.rule-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rule-row-main .switch {
+  margin: 0 4px 0 2px;
+}
+
+.rule-input {
+  min-width: 0;
+  padding: 6px 8px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: var(--bg-field);
+  font-size: 12px;
+  font-family: var(--mono);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.12s ease, background 0.12s ease;
+}
+
+.rule-input:focus {
+  background: var(--bg);
+  border-color: var(--line-strong);
+}
+
+.rule-input::placeholder {
+  color: var(--text-faint);
+  font-family: var(--sans);
+}
+
+.rule-header {
+  flex: 1;
+  font-weight: 500;
+}
+
+.rule-operation {
+  width: 84px;
+  flex-shrink: 0;
+  font-family: var(--sans);
+  cursor: pointer;
+}
+
+.value-field {
+  flex: 1.4;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.value-field .rule-value {
+  flex: 1;
+  padding-right: 28px;
+  color: var(--text-secondary);
+}
+
+/* 用文字遮罩取代 password 欄位，避免觸發瀏覽器的密碼管理 */
+.rule-value.is-masked {
+  -webkit-text-security: disc;
+}
+
+.btn-reveal {
+  position: absolute;
+  right: 4px;
+  background: none;
+  border: none;
+  color: var(--text-faint);
+  padding: 3px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+}
+
+.btn-reveal:hover {
+  color: var(--text);
+}
+
+.rule-domains {
+  flex: 1;
+}
+
+.rule-hint {
+  font-size: 11px;
+  color: var(--warning);
+  padding-left: 2px;
+}
+
+.btn-delete {
+  background: none;
+  border: none;
+  color: var(--line-strong);
+  padding: 4px;
+  cursor: pointer;
+  transition: color 0.12s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.btn-delete:hover {
+  color: var(--danger);
+}
+
+/* ---- Buttons ---- */
+.btn {
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.12s ease, border-color 0.12s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: inherit;
+}
+
+.btn-add {
+  background: var(--bg);
+  border-color: var(--line);
+  color: var(--text);
+  padding: 4px 9px;
+}
+
+.btn-add:hover {
+  background: var(--bg-field);
+  border-color: var(--line-strong);
+}
+
+/* ---- Footer ---- */
+.footer {
+  padding: 10px 16px;
+  background: var(--bg-subtle);
+  border-top: 1px solid var(--line);
+  font-size: 11px;
+  color: var(--text-muted);
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* ---- Empty State ---- */
+.empty-state {
+  text-align: center;
+  padding: 28px 20px;
+  color: var(--text-faint);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.empty-icon {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 10px;
+  background: var(--bg-field);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--line-strong);
+}
+
+/* ---- Animations ---- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
